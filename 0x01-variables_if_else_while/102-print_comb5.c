@@ -1,5 +1,3 @@
-table File  49 lines (46 sloc)  613 Bytes
-
 #include <stdio.h>
 
 /**
