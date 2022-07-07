@@ -1,20 +1,20 @@
-#include <stdio.h>
 #include "main.h"
-
 /**
- * main -  Prints _putchar
+ * main - prints putchar
  *
- * Description: Program to print _putchar
  * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-	int x;
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 
-	if (n < 0)
-	n = -n;
-	x = n % 10;
-	_putchar (x = '0');
-	return (x);
+	return (0);
 }
