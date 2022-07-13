@@ -1,24 +1,16 @@
 #include "main.h"
 
 /**
- * main - causes an infinte loop
- * Return: 0
+ * main - check the code
+ *
+ * Return: Always 0
  */
 
 int main(void)
 {
-	int i;
+	char *str;
 
-	printf("Infinite loop incoming :(\n");
-
-	i = 0;
-
-	/*while (i < 10)*/
-	/*{*/
-	/*	putchar(i);*/
-	/*}*/
-
-	printf("Infinite loop avoided! \\o/\n");
-
+	str = "0123456789";
+	puts2(str);
 	return (0);
 }
