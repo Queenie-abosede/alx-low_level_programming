@@ -1,48 +1,53 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * infinite_add - adds two numbers.
- * @n1: First number
- * @n2: Second number
- * @r: result buffer
- * @size_r: result buffer size
- * Return: 0 if the result can not be stored in r,
- * otherwise a pointer to the result
+ * infinite_add - adds two numbers
+ * @n1: number one.
+ * @n2: number two.
+ * @r: buffer that the function will use to store the result.
+ * @size_r: buffer size:
+ * Return: the pointer to dest.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, l, m, n;
+	int c1 = 0, c2 = 0, m, n, p1, p2, add = 0;
 
-	for (i = 0; n1[i]; i++)
-		;
-	for (j = 0; n2[j]; j++)
-		;
-	if (i > size_r || j > size_r)
+	while (*(n1 + c1) != '\0')
+		c1++;
+	while (*(n2 + c2) != '\0')
+		c2++;
+	if (c1 >= c2)
+		n = c1;
+	else
+		n = c2;
+	if (size_r <= n + 1)
 		return (0);
-	m = 0;
-	for (i -= 1, j -= 1, k = 0; k < size_r - 1; i--, j--, k++)
+	r[n + 1] = '\0';
+	c1--, c2--, size_r--;
+	p1 = *(n1 + c1) - 48, p2 = *(n2 + c2) - 48;
+	while (n >= 0)
 	{
-		n = m;
-		if (i >= 0)
-			n += n1[i] - '0';
-		if (j >= 0)
-			n += n2[j] - '0';
-		if (i < 0 && j < 0 && n == 0)
-		{
-			break;
-		}
-		m = n / 10;
-		r[k] = n % 10 + '0';
+		m = p1 + p2 + add;
+		if (m >= 10)
+			add = m / 10;
+		else
+			add = 0;
+		if (m > 0)
+			*(r + n) = (m % 10) + 48;
+		else
+			*(r + n) = '0';
+		if (c1 > 0)
+			c1--, p1 = *(n1 + c1) - 48;
+		else
+			p1 = 0;
+		if (c2 > 0)
+			c2--, p2 = *(n2 + c2) - 48;
+		else
+			p2 = 0;
+		n--, size_r--;
 	}
-	r[k] = '\0';
-	if (i >= 0 || j >= 0 || m)
-		return (0);
-	for (k -= 1, l = 0; l < k; k--, l++)
-	{
-		m = r[k];
-		r[k] = r[l];
-		r[l] = m;
-	}
-
-	return (r);
+	if (*(r) == '0')
+		return (r + 1);
+	else
+		return (r);
 }
