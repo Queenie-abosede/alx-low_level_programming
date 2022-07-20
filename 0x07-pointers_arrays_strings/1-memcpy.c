@@ -1,16 +1,20 @@
 #include "main.h"
-
 /**
- * main - check the code
- *
- * Return: Always 0
+ * _memcpy - a function that copies memory area.
+ * @src: memory area
+ * @dest: memory area
+ * @n: size of bytes
+ * Return: value of dest.
  */
-
-int main(void)
+char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	char *str;
+	char *t = dest;
 
-	str = "0123456789";
-	puts2(str);
-	return (0);
+	while (n--)
+	{
+		*dest = *src;
+		src++;
+		dest++;
+	}
+	return (t);
 }
